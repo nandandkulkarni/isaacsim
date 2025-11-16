@@ -17,15 +17,15 @@ This document explains how to capture video from Isaac Sim running in headless m
 ### 1. Run a Headless Simulation with Capture
 
 ```bash
-cd /workspace/isaacsim
+cd /workspace
 source /workspace/isaac-venv-py311/bin/activate
-python test_rotating_bouncing_cube.py
+python /workspace/isaacsim/scripts/examples/test_rotating_bouncing_cube.py
 ```
 
 ### 2. Convert Frames to Video
 
 ```bash
-/workspace/isaacsim/convert-frames-to-video.sh my_video.mp4 60
+/workspace/isaacsim/scripts/utilities/convert-frames-to-video.sh my_video.mp4 60
 ```
 
 **Arguments:**
@@ -36,13 +36,13 @@ python test_rotating_bouncing_cube.py
 **Examples:**
 ```bash
 # Use defaults (output.mp4, 60fps, CRF 23)
-/workspace/convert-frames-to-video.sh
+/workspace/isaacsim/scripts/utilities/convert-frames-to-video.sh
 
 # Custom name and framerate
-/workspace/convert-frames-to-video.sh simulation.mp4 30
+/workspace/isaacsim/scripts/utilities/convert-frames-to-video.sh simulation.mp4 30
 
 # Custom name, framerate, and quality
-/workspace/convert-frames-to-video.sh high_quality.mp4 60 18
+/workspace/isaacsim/scripts/utilities/convert-frames-to-video.sh high_quality.mp4 60 18
 ```
 
 ---
@@ -100,7 +100,7 @@ python test_rotating_bouncing_cube.py
 
 ## Video Conversion
 
-### Script: `/workspace/convert-frames-to-video.sh`
+### Script: `/workspace/isaacsim/scripts/utilities/convert-frames-to-video.sh`
 
 **What it does:**
 1. Checks for PNG frames in `/workspace/isaac_captures/`
@@ -132,7 +132,7 @@ ffmpeg -y \
 
 ### Simple Rotating & Bouncing Cube
 
-**File:** `/workspace/isaacsim/test_rotating_bouncing_cube.py`
+**File:** `/workspace/isaacsim/scripts/examples/test_rotating_bouncing_cube.py`
 
 **Features:**
 - Blue cube that rotates continuously
@@ -225,10 +225,10 @@ simulation_app.close()
 ## File Locations
 
 ### Scripts
-- **Conversion script:** `/workspace/isaacsim/convert-frames-to-video.sh`
-- **Example capture:** `/workspace/isaacsim/test_rotating_bouncing_cube.py`
-- **Simple headless test:** `/workspace/isaacsim/test_headless_simple.py`
-- **Physics capture:** `/workspace/isaacsim/test_headless_capture.py`
+- **Conversion script:** `/workspace/isaacsim/scripts/utilities/convert-frames-to-video.sh`
+- **Example capture:** `/workspace/isaacsim/scripts/examples/test_rotating_bouncing_cube.py`
+- **Simple headless test:** `/workspace/isaacsim/scripts/tests/test_headless_simple.py`
+- **Physics capture:** `/workspace/isaacsim/scripts/examples/test_headless_capture.py`
 
 ### Directories
 - **Frame output:** `/workspace/isaac_captures/`
@@ -448,12 +448,12 @@ mv /workspace/isaac_captures/*.mp4 /workspace/video_archive/
 ✅ **Capture workflow:**
 1. Write Python script with headless SimulationApp + replicator
 2. Run: `python your_script.py`
-3. Convert: `/workspace/convert-frames-to-video.sh output.mp4`
+3. Convert: `/workspace/isaacsim/scripts/utilities/convert-frames-to-video.sh output.mp4`
 4. Download video via VS Code or SCP
 
 ✅ **Key files:**
-- Converter: `/workspace/isaacsim/convert-frames-to-video.sh`
-- Example: `/workspace/isaacsim/test_rotating_bouncing_cube.py`
+- Converter: `/workspace/isaacsim/scripts/utilities/convert-frames-to-video.sh`
+- Example: `/workspace/isaacsim/scripts/examples/test_rotating_bouncing_cube.py`
 - Output: `/workspace/isaac_captures/*.mp4`
 
 ✅ **Remember:**
