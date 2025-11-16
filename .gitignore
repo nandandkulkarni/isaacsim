@@ -1,0 +1,9 @@
+# VS Code directories
+.vscode-cli/
+.vscode-server/
+
+# SSH keys
+.ssh/
+
+# Log files
+*.log
