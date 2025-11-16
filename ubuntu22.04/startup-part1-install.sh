@@ -2,7 +2,7 @@
 echo "=== Part 1: Installing Dependencies ==="
 
 # Check if already installed
-if command -v sshd &> /dev/null && [ -d /var/run/sshd ] && command -v git &> /dev/null && command -v Xvfb &> /dev/null && command -v x11vnc &> /dev/null && command -v nginx &> /dev/null && command -v netstat &> /dev/null && command -v xfce4-session &> /dev/null; then
+if command -v sshd &> /dev/null && [ -d /var/run/sshd ] && command -v git &> /dev/null && command -v Xvfb &> /dev/null && command -v x11vnc &> /dev/null && command -v nginx &> /dev/null && command -v netstat &> /dev/null && command -v xfce4-session &> /dev/null && command -v ffmpeg &> /dev/null; then
     echo "✓ Dependencies already installed"
     exit 0
 fi
@@ -39,6 +39,9 @@ apt-get install -y supervisor psmisc procps
 
 echo "Installing XFCE desktop environment..."
 apt-get install -y xfce4 xfce4-terminal
+
+echo "Installing media tools..."
+apt-get install -y ffmpeg
 
 echo "Verifying SSH setup..."
 mkdir -p /var/run/sshd

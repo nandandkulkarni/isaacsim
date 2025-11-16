@@ -13,9 +13,22 @@ echo ""
 # 1. Install CUDA 12.8
 echo "[1/3] Installing CUDA 12.8..."
 if [ ! -d "/usr/local/cuda-12.8" ]; then
+    # Configure APT to cache .deb files in workspace
+    mkdir -p /workspace/downloads/apt-archives
+    
+    echo "  Updating package list..."
     apt-get update -qq
-    apt-get install -y -qq cuda-toolkit-12-8
-    echo "✓ CUDA 12.8 installed"
+    
+    echo "  Downloading CUDA 12.8 toolkit..."
+    echo "  (Downloads cached to /workspace/downloads/apt-archives for future restarts)"
+    
+    # Download .debs to workspace cache
+    apt-get install -y --download-only -o Dir::Cache::archives="/workspace/downloads/apt-archives/" cuda-toolkit-12-8
+    
+    # Install from cache
+    apt-get install -y -o Dir::Cache::archives="/workspace/downloads/apt-archives/" cuda-toolkit-12-8
+    
+    echo "✓ CUDA 12.8 installed (cached for future use)"
 else
     echo "✓ CUDA 12.8 already installed"
 fi
