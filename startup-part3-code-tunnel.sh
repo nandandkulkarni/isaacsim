@@ -3,8 +3,8 @@ echo "=== Part 3: Code Tunnel ==="
 
 # Restore authentication from workspace
 if [ -d /workspace/.vscode-cli ]; then
-    mkdir -p ~/.vscode
-    cp -r /workspace/.vscode-cli ~/.vscode/cli
+    mkdir -p ~/.vscode/cli
+    cp -r /workspace/.vscode-cli/* ~/.vscode/cli/
     echo "✓ Restored VS Code authentication"
 else
     echo "⚠ No saved authentication found - will need to authenticate"
