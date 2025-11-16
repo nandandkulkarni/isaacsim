@@ -7,3 +7,4 @@ bash /workspace/startup-part5-xvfb.sh
 bash /workspace/startup-part6-vnc.sh
 bash /workspace/startup-part7-web.sh
 bash /workspace/startup-part8-vscode.sh
+bash /workspace/startup-part9-python.sh
