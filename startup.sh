@@ -8,3 +8,4 @@ bash /workspace/isaacsim/startup-part6-vnc.sh
 bash /workspace/isaacsim/startup-part7-web.sh
 bash /workspace/isaacsim/startup-part8-vscode.sh
 bash /workspace/isaacsim/startup-part9-python.sh
+bash /workspace/isaacsim/startup-part10-isaac-venv.sh
