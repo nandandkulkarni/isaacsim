@@ -29,19 +29,18 @@ fi
 
 # Check if Isaac Sim is installed
 if pip show isaacsim > /dev/null 2>&1; then
-    echo "✓ Isaac Sim already installed"
+    echo "✓ Isaac Sim base package installed (version $(pip show isaacsim | grep Version | cut -d' ' -f2))"
     
     # Check if all required packages are installed
-    MISSING_PACKAGES=0
+    MISSING_PACKAGES=()
     for pkg in isaacsim-app isaacsim-core isaacsim-gui isaacsim-robot isaacsim-sensor; do
         if ! pip show $pkg > /dev/null 2>&1; then
-            echo "  Missing package: $pkg"
-            MISSING_PACKAGES=1
+            MISSING_PACKAGES+=("$pkg")
         fi
     done
     
-    if [ $MISSING_PACKAGES -eq 1 ]; then
-        echo "Installing additional Isaac Sim packages..."
+    if [ ${#MISSING_PACKAGES[@]} -gt 0 ]; then
+        echo "Installing missing packages: ${MISSING_PACKAGES[*]}"
         pip install --quiet --upgrade \
             isaacsim-app \
             isaacsim-core \
@@ -49,15 +48,39 @@ if pip show isaacsim > /dev/null 2>&1; then
             isaacsim-robot \
             isaacsim-sensor \
             --extra-index-url https://pypi.nvidia.com
-        echo "✓ Additional packages installed"
+        
+        if [ $? -eq 0 ]; then
+            echo "✓ Additional packages installed successfully"
+        else
+            echo "⚠ Warning: Some packages failed to install"
+        fi
     else
-        echo "✓ All Isaac Sim packages present"
+        echo "✓ All required Isaac Sim packages present:"
+        echo "  - isaacsim (base)"
+        echo "  - isaacsim-app"
+        echo "  - isaacsim-core"
+        echo "  - isaacsim-gui"
+        echo "  - isaacsim-robot"
+        echo "  - isaacsim-sensor"
     fi
 else
-    echo "Isaac Sim not installed. Run installation manually:"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "⚠ Isaac Sim NOT installed"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    echo "To install Isaac Sim (first time only):"
+    echo ""
     echo "  source /workspace/isaac-venv-py311/bin/activate"
     echo "  pip install isaacsim[all,extscache]==5.1.0 --extra-index-url https://pypi.nvidia.com"
+    echo ""
+    echo "Then install additional packages:"
+    echo ""
     echo "  pip install isaacsim-app isaacsim-core isaacsim-gui isaacsim-robot isaacsim-sensor --extra-index-url https://pypi.nvidia.com"
+    echo ""
+    echo "Note: This is a ~10GB download and takes 20-30 minutes."
+    echo "      It only needs to be done once - packages persist in /workspace/isaac-venv-py311/"
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 fi
 
 echo "Part 10 complete: Isaac Sim venv ready"
