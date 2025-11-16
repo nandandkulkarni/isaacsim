@@ -2,10 +2,10 @@
 echo "=== Part 10: Isaac Sim Virtual Environment ==="
 
 # Create venv if it doesn't exist
-if [ ! -d /workspace/isaac-venv ]; then
+if [ ! -d /workspace/isaac-venv-py311 ]; then
     echo "Creating Python 3.11 virtual environment..."
     if command -v python3.11 &> /dev/null; then
-        python3.11 -m venv /workspace/isaac-venv
+        python3.11 -m venv /workspace/isaac-venv-py311
     else
         echo "✗ Python 3.11 not found. Please run Part 9 first."
         exit 1
@@ -16,7 +16,7 @@ else
 fi
 
 # Activate venv
-source /workspace/isaac-venv/bin/activate
+source /workspace/isaac-venv-py311/bin/activate
 
 # Verify activation
 if [ -n "$VIRTUAL_ENV" ]; then
