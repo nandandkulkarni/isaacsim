@@ -15,12 +15,12 @@ bash /workspace/isaacsim/ubuntu22.04/setup-isaac-cuda.sh
 
 ### Launch Isaac Sim GUI
 ```bash
-/workspace/launch-isaac-sim.sh
+/workspace/isaacsim/launch-isaac-sim.sh
 ```
 
 ### Run Python Test Script
 ```bash
-/workspace/run-test.sh /workspace/isaacsim/scripts/test_simple_scene.py
+/workspace/isaacsim/run-test.sh /workspace/isaacsim/scripts/test_simple_scene.py
 ```
 
 ### Check Logs
@@ -59,9 +59,11 @@ git config user.email "nandandkulkarni@gmail.com"
 
 | Path | Description |
 |------|-------------|
+| `/workspace/isaacsim/README.md` | Main overview and quick start |
 | `/workspace/isaacsim/SETUP.md` | Complete setup documentation |
-| `/workspace/launch-isaac-sim.sh` | Main Isaac Sim launcher |
-| `/workspace/run-test.sh` | Test script runner |
+| `/workspace/isaacsim/launch-isaac-sim.sh` | Main Isaac Sim launcher |
+| `/workspace/isaacsim/run-test.sh` | Test script runner |
+| `/workspace/isaacsim/convert-frames-to-video.sh` | Video conversion utility |
 | `/workspace/isaacsim/ubuntu22.04/setup-isaac-cuda.sh` | CUDA library fix |
 | `/workspace/isaac-venv-py311/` | Python virtual environment |
 | `/workspace/isaac-sim-*.log` | Application logs |
