@@ -1,0 +1,61 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+isaac-venv/
+isaac-venv-py311/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Cache
+.cache/
+*.cache
+ov-cache/
+
+# Downloads
+downloads/
+
+# Captures (these are generated at runtime)
+isaac_captures/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Documentation (keep README files)
+*.md
+!README.md
+
+# Build artifacts
+*.tar.gz
+*.zip
